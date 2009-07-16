@@ -1,3 +1,8 @@
+import java.lang.System
+import scala.Random
+
+//sort from http://www.scala-lang.org/docu/files/ScalaByExample.pdf
+
 def sort(xs: Array[Int]) {
   def swap(i: Int, j: Int) {
     val t = xs(i); xs(i) = xs(j); xs(j) = t
@@ -20,3 +25,22 @@ def sort(xs: Array[Int]) {
   }
   sort1(0, xs.length - 1)
 }
+
+def fill_array(): Array[Int] = {
+  var xs = new Array[Int](100)
+  var rand = new Random(System.currentTimeMillis())
+  for (i <- List.range(0, 100)) xs(i) = rand.nextInt(100)
+  xs
+}
+
+def print_array(xs: Array[Int]): String = {
+  var str = new String
+  xs.foreach(x => str += x + ",")
+  str.substring(0, str.length -1)
+}
+
+var start = fill_array()
+println("Start: [" + print_array(start) + "]")
+sort(start)
+println
+println("Sorted: [" + print_array(start) + "]")
